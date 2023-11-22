@@ -95,7 +95,6 @@ def singlyLinkedList():
     
 
 
-##exercise2##
-#################################
+
 
 main()

@@ -181,12 +181,13 @@ def main():
             print("You selected the fourth choice:")
         elif x==5:
             print("You select the fifth:")
+            editGraph()
         elif x==6:
             print("You selected the sixth choice:")
             print("Closing the menu ")
             f=False
     
-    print("End of the  program...\n Bye byee...")
+    print("End of the  program...\nBye byee...")
             
 
 
@@ -197,6 +198,7 @@ def singlyLinkedList():
     while(x==1):
         print("\nPlease choose a character from this menu : \n ")
         print(" a. Add Node \n b. Display Nodes \n c. Search for & Delete Node \n d. Return to main menu \n")
+        
         y=input("Enter the char. : ")
         if y=="a":
             LL.addNode()
@@ -239,4 +241,29 @@ def checkPalandrome():
         
             
 
+
+
+##exercise5##
+###############################
+def editGraph():
+    q=1
+    while(q):
+        print("\nPlease choose a character from this menu : \n ")
+        print("a. Add vertex \nb. Add edge \nc. Remove vertex \nd. Remove edge \ne. Display vertices with a degree of X or more. \nf. Return to main menu")
+        r=input("Enter the char. :")
+        if r=="a":
+            G.addVertex()
+        elif r=="b":
+            G.addEdge()
+        elif r=="c":
+            G.removeVertex()
+        elif r=="d":
+            G.removeEdge()
+        elif r=="e":
+            G.displayVertex()
+        elif r=="f":
+            print("Returning to the main menu ...")
+            q=0
+        else :
+            print("Enter :a or b or c or d or e or f only \n")
 main()

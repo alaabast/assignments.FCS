@@ -14,19 +14,21 @@ class LinkedList:
 
     def __init__(self):
         self.head = None
-        self.current = self.head
+        self.current = self.head ##when we use current the complexity of adding a node is O(1) not O(N)
+        
 
     def addNode(self):
-        num = int(input("Enter a number to add it to the LL :"))
-        node = Node(num)
-        if self.head is None:
-            self.head = node
+        num = int(input("Enter a number to add it to the LL :")) #the info entered by the user
+        
+        node = Node(num) #create a node
+        if self.head is None:  #if this node is the first node in the LL
+            self.head = node 
             self.current = node
             LL.head = node
-        else:
+        else: # if isn't
             self.current.next = node
             self.current = node
-        print("we add ", num)
+        print("we add ", num) 
 
     def displaysNodes(self):
         a = self.head

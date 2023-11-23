@@ -216,20 +216,20 @@ def main():
         print(" 1. Singly Linked List \n 2. Check if Palindrome \n 3. Priority Queue \n 4. Evaluate an Infix Expression \n 5. Graph \n 6. Exit \n")
         x=int(input("Ente the number : "))
         if x==1:
-            print("You selected the first choice:")
+            print("You selected the first choice : ")
             singlyLinkedList()
         elif x==2:
-            print("You selected the second choice:")
+            print("You selected the second choice : ")
             checkPalandrome()
         elif x==3:
-            print("You selected the third choice:")
+            print("You selected the third choice : ")
         elif x==4:
-            print("You selected the fourth choice:")
+            print("You selected the fourth choice : ")
         elif x==5:
-            print("You select the fifth:")
+            print("You select the fifth choice : ")
             editGraph()
         elif x==6:
-            print("You selected the sixth choice:")
+            print("You selected the sixth choice : ")
             print("Closing the menu ")
             f=False
     

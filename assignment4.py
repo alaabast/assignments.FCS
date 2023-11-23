@@ -125,6 +125,38 @@ class Queue:
         return len(self.items)
 
 
+
+
+
+
+
+
+##classes for exercise3##
+################################
+
+class Student:
+    def _init_(self,name_student,mid,final,personality):
+        self.name=name_student
+        self.mid_grade=mid
+        self.final_grade=final
+        self.good=personality
+##getting methods##      
+    def getName(self):
+        return self.name
+    
+    def getMid(self):
+        return self.mid_grade
+    
+    def getFinal(self):
+        return self.final_grade
+    
+    def getPersonality(self):
+        return self.good
+    
+##class QueuePriority:
+    
+    
+
     
 LL=LinkedList()    
 Q1=Queue()
@@ -132,8 +164,8 @@ S1=Stack()
 def main():
     print("Welcome!")
 
-
-    while(True):
+    f=True 
+    while(f):
         print("Please choose a number from this menu : \n ")
         print(" 1. Singly Linked List \n 2. Check if Palindrome \n 3. Priority Queue \n 4. Evaluate an Infix Expression \n 5. Graph \n 6. Exit \n")
         x=int(input("Ente the number : "))
@@ -143,6 +175,18 @@ def main():
         elif x==2:
             print("You selected the second choice:")
             checkPalandrome()
+        elif x==3:
+            print("You selected the third choice:")
+        elif x==4:
+            print("You selected the fourth choice:")
+        elif x==5:
+            print("You select the fifth:")
+        elif x==6:
+            print("You selected the sixth choice:")
+            print("Closing the menu ")
+            f=False
+    
+    print("End of the  program...\n Bye byee...")
             
 
 

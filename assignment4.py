@@ -157,10 +157,56 @@ class Student:
     
     
 
+
+class Graph:
+    def __init__(self):
+        self.adj_list = {} #initialize a dictionary
+
+    def addVertex(self):
+        vertex=input("Enter the vertex :")
+        if vertex not in self.adj_list:
+            self.adj_list[vertex] = [] #add a new row to the dictionary
+
+    def removeVertex(self):
+        vertex=input("Enter the name of the vertex you want to delete it :")
+        if vertex in self.adj_list: #check if the vertex is in the list of vertices 
+            del self.adj_list[vertex]
+            for neighbors in self.adj_list.values(): #delete the vertex from the neighbor of the other vertices
+                if vertex in neighbors:
+                    neighbors.remove(vertex)
+
+    def addEdge(self):
+        source=input("Enter the name of  the source vertex :")
+        destination=input("Enter the name of the destination vertex :")
+        if source not in self.adj_list: #add the vertex source to the list of vertices 
+            self.adj_list[source] = []
+        if destination not in self.adj_list: #add the vertex destination to the list of vertices
+            self.adj_list[destination] = []
+
+        self.adj_list[source].append(destination)
+        self.adj_list[destination].append(source)
+
+    def removeEdge(self):
+        source=input("Enter the name of  the source vertex :")
+        destination=input("Enter the name of the destination vertex :")
+        if source in self.adj_list and destination in self.adj_list:
+            self.adj_list[source].remove(destination)  # remove the destination from the neighbors of the source
+            self.adj_list[destination].remove(source) #remove the source from the neighbors of the destination
     
+    def displayVertex(self):
+        nbr=int(input("Enter the value of the degree :"))
+        print("The vertex with degree >",nbr," is :")
+        for vertex, neighbors in self.adj_list.items():
+            if len(neighbors) >= nbr:
+                print(vertex,end=" ")
+        print()
+            
+            
 LL=LinkedList()    
 Q1=Queue()
 S1=Stack()
+G=Graph()
+
 def main():
     print("Welcome!")
 
@@ -266,4 +312,13 @@ def editGraph():
             q=0
         else :
             print("Enter :a or b or c or d or e or f only \n")
+            
+            
+            
+            
+            
+            
+            
+            
+            
 main()

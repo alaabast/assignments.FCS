@@ -38,21 +38,29 @@ class LinkedList:
         print()
 
     def deleteNode(self):
-        deleted=int(input("Enter the value you want to delete it"))
+        deleted = int(input("Enter the value you want to delete it"))
         curr = self.head
-        if self.head is not None:
-            if self.head.info == deleted:
-                temp = self.head
-                curr = self.head.next
-                del temp
-            prev = None
-            while curr is not None:
-                if curr.info == deleted:
+        prev = None
+        flag=0 #check if the value entered by the user is on the list
+        while curr: ##from the head to the end of the list
+            if curr.info == deleted: #check if the value is availble
+                if prev: #if is not the firt node(the head)
                     prev.next = curr.next
-                    del curr
-                else:
-                    prev = curr
+                else: #if is the head
+                    self.head = curr.next #change the head
+                temp = curr # for deleting it from the memory
                 curr = curr.next
+                #here never change the previous
+                del temp
+                flag=1 #change the value of flag to know we have the value in this list
+            else:
+                prev = curr
+                curr = curr.next
+
+        if curr is None and prev:
+            self.tail = prev
+        if(flag==0):
+            print(deleted ,"not availble in this list")
 
     
     

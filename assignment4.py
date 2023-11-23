@@ -92,14 +92,7 @@ class Stack:
         m=self.items[-1]
         del self.items[-1]
         return m
-        
-        return m
 
-    def peek(self):
-        if not self.items:
-            print("Stack is empty")
-            return 
-        return self.items[-1]
 
     def isEmpty(self):
         return len(self.items) == 0
@@ -108,19 +101,11 @@ class Stack:
         return len(self.items)
               
 
-    def is_empty(self):
-        return len(self.items) == 0
-
-    def size(self):
-        return len(self.items)
-    
-    
     
     
 class Queue:
     def __init__(self):
         self.items = []
-        self.index = 0
 
     def enqueue(self, item):
         self.items.append(item)
@@ -129,16 +114,15 @@ class Queue:
         if not self.items:
             print("Queue is empty")
             return
-        n = self.items[self.index]
-        del self.items[self.index]
-        self.index += 1 - 1
+        n = self.items[0]
+        del self.items[0]
         return n
 
     def isEmpty(self):
-        return (len(self.items) - self.index) == 0
+        return len(self.items) == 0
 
     def size(self):
-        return (len(self.items) - self.index)
+        return len(self.items)
 
 
     
@@ -196,15 +180,15 @@ def checkPalandrome():
     i = 0
     mid = S1.size() // 2  # calculate the middle index of the string
     while i<mid :
-        s=S1.pop()
-        q=Q1.dequeue()
+        s=S1.pop() #pop the last char. from the string
+        q=Q1.dequeue() #dequeue the first char from the string
         print("from stack:", s)
         print("from queue:",q)
-        if(s!=q):
+        if(s!=q): #compare 
             break
         i+=1
 
-    if i == mid:
+    if i == mid: #the while loop has finished
         print(str, " is Palindrome")
     else:
         print(str, " isn't Palindrome")

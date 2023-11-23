@@ -239,6 +239,7 @@ def main():
 
 ##exerice1##
 #################################
+
 def singlyLinkedList():
     x=1
     while(x==1):
@@ -263,6 +264,7 @@ def singlyLinkedList():
 
 ##exercise2##
 #############################
+
 def checkPalandrome():
     str = input("Enter a string : ")
     for char in str:  # O(N)
@@ -286,11 +288,18 @@ def checkPalandrome():
         print(str, " isn't Palindrome")
         
             
+##exercise4##
+###############################
 
 
 
 ##exercise5##
 ###############################
+#Adjacency Matrix is better in this problem,because :
+##it has less complexity for knowing the len. of each list(list of neighbors of each vertices ) 
+##Searching for an edge between v1 and v2  O(1) only
+##Removing an edge between v1 and v2 O(1) only
+
 def editGraph():
     q=1
     while(q):

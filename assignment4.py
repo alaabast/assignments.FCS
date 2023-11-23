@@ -2,7 +2,14 @@
 #FCS_c48
 #Assignment4
 
-##functions of the exericise 1##
+
+
+
+
+##classes of the exericise 1##
+##############################
+
+
 class Node:
 
     def __init__(self, info):
@@ -62,11 +69,82 @@ class LinkedList:
         if(flag==0):
             print(deleted ,"not availble in this list")
 
+
+
+
+
+
+##classes of the exericise 2##
+##############################
+
+
+class Stack:
+    def __init__(self):
+        self.items = []
+
+    def push(self, item):
+        self.items.append(item)
+
+    def pop(self):
+        if not self.items:
+            print("Stack is empty")
+            return
+        m=self.items[-1]
+        del self.items[-1]
+        return m
+        
+        return m
+
+    def peek(self):
+        if not self.items:
+            print("Stack is empty")
+            return 
+        return self.items[-1]
+
+    def isEmpty(self):
+        return len(self.items) == 0
+
+    def size(self):
+        return len(self.items)
+              
+
+    def is_empty(self):
+        return len(self.items) == 0
+
+    def size(self):
+        return len(self.items)
     
     
+    
+    
+class Queue:
+    def __init__(self):
+        self.items = []
+        self.index = 0
+
+    def enqueue(self, item):
+        self.items.append(item)
+
+    def dequeue(self):
+        if not self.items:
+            print("Queue is empty")
+            return
+        n = self.items[self.index]
+        del self.items[self.index]
+        self.index += 1 - 1
+        return n
+
+    def isEmpty(self):
+        return (len(self.items) - self.index) == 0
+
+    def size(self):
+        return (len(self.items) - self.index)
+
+
     
 LL=LinkedList()    
-
+Q1=Queue()
+S1=Stack()
 def main():
     print("Welcome!")
 
@@ -80,8 +158,9 @@ def main():
             singlyLinkedList()
         elif x==2:
             print("You selected the second choice:")
+            checkPalandrome()
             
-              
+
 
 ##exerice1##
 #################################
@@ -106,5 +185,30 @@ def singlyLinkedList():
 
 
 
+##exercise2##
+#############################
+def checkPalandrome():
+    str = input("Enter a string : ")
+    for char in str:  # O(N)
+        Q1.enqueue(char)  # insert character into queue
+        S1.push(char)  # insert character into stack
+    
+    i = 0
+    mid = S1.size() // 2  # calculate the middle index of the string
+    while i<mid :
+        s=S1.pop()
+        q=Q1.dequeue()
+        print("from stack:", s)
+        print("from queue:",q)
+        if(s!=q):
+            break
+        i+=1
+
+    if i == mid:
+        print(str, " is Palindrome")
+    else:
+        print(str, " isn't Palindrome")
+        
+            
 
 main()

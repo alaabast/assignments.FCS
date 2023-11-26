@@ -270,7 +270,7 @@ LL=LinkedList()
 Q1=Queue()
 S1=Stack()
 G=Graph()
-
+PQ=PriorityQueue()
 def main():
     print("Welcome!")
 
@@ -368,6 +368,7 @@ def organizingInterview():
         choice=input("Enter the char. :")
         if choice=="a" :
             print("Add all the info of the student:")
+            PQ.enqueue(addStudent())
         elif choice=="b" :
             print("The order of the interviews :")
         elif choice=="c":
@@ -377,7 +378,32 @@ def organizingInterview():
             print("Enter :a or b or c  only ")
         
 
-
+def addStudent():
+    student_name = input("Enter the name of the student: ")
+    while True:
+        midterm_grade = int(input("Enter the midterm grade of the student: "))
+        if 0 <= midterm_grade <= 100:
+            break
+        else:
+            print("Invalid midterm grade. Enter a value between 0 and 100.")
+    while True:
+        final_grade = int(input("Enter the final grade of the student: "))
+        if 0 <= final_grade <= 100:
+            break
+        else:
+            print("Invalid final grade. Enter a value between 0 and 100.")
+    while True:
+        student_attitude = input("Enter the attitude of the student (Y for good, N for not good): ")
+        if student_attitude == "Y" or student_attitude == "N":
+            break
+        else:
+            print("Invalid attitude input. Enter Y for good or N for not good.")
+    if student_attitude=="Y":
+        good_attitude=True
+    else:
+        good_attitude=False
+    S= Student(student_name, midterm_grade, final_grade, good_attitude)
+    return S
 
 
 

@@ -230,6 +230,7 @@ def main():
             checkPalandrome()
         elif x==3:
             print("You selected the third choice : ")
+            organizingInterview()
         elif x==4:
             print("You selected the fourth choice : ")
         elif x==5:
@@ -294,6 +295,36 @@ def checkPalandrome():
     else:
         print(str, " isn't Palindrome")
         
+
+
+
+
+
+
+##exercise3##
+###############################
+def organizingInterview():
+    p=1
+    while(p==1):
+        print("\nPlease choose a character from this menu : \n ")
+        print("a. Add a student \nb. Interview a student \nc. Return to main menu")
+        choice=input("Enter the char. :")
+        if choice=="a" :
+            print("Add all the info of the student:")
+        elif choice=="b" :
+            print("The order of the interviews :")
+        elif choice=="c":
+            print("Returning to the main menu ...")
+            p=0
+        else:
+            print("Enter :a or b or c  only ")
+        
+
+
+
+
+
+
             
 ##exercise4##
 ###############################

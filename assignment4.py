@@ -169,62 +169,71 @@ class Student:
     
 class PriorityQueue:
 
-  def __init__(self):
-    self.head = None
-    self.size = 0
-    
-    
-  def displayNodes(self):
-    current = self.head
-    while current != None:
-      print(current.info.getName() , end=" ")
-      current = current.next
+    def __init__(self):
+        self.head = None
+        self.size = 0
 
-  def enqueue(self, value):
-      node = Node(value) #create the node
-      if self.size == 0: #if the queue is empty the node is the head
-          self.head = node
-          self.size += 1
-      else:
-          current=self.head
-          if value.getPersonality()==True:
-              if self.head.getPersonality()==False : #if all the student in the queue has a bad attitude
-                  node.next=self.head
-                  self.head=node
-              else :
-                  
-                  while current.info.getFinal()>node.info.getFinal() and current.info.getPersonality():
-                      previous=current
-                      current=current.next
-                  if current.info.final_grade==node.info.final_grade: ##if the 2 student has the same grade in final and good attitude
-                      while current.info.getMid()>node.info.getMid() :
-                          previous=current
-                          current=current.next   
-                      previous.next=node
-                      node.next=current
-                      self.size += 1
-                  else : #add the node before the current if the current has bad attitude or the node has a final grade > final grade of the current
-                     previous.next=node
-                     node.next=current
-                     self.size += 1
-          else: #if the new student has a bad attitude ,we add it at the end of the queue
-              while current.next is not None:
-                  current=current.next
-              current.next=node
-      print("done")
-  def dequeue(self):      
-      if self.size == 0:
-          print("Queue is empty")
-                
-      elif self.size == 1:
-          self.head = None
-          self.size -= 1
-          
-      else:
-          current = self.head
-          self.head = self.head.next
-          current.next = None
-          self.size -= 1 
+    def displayNodes(self):
+        current = self.head
+        while current is not None:
+            print(current.info.getName(), end=" ")
+            current = current.next
+
+    def enqueue(self, value):
+        node = Node(value)  # create the node
+
+        if self.size == 0:  # if the queue is empty the node is the head
+            self.head = node
+            self.size += 1
+        else:
+            current = self.head
+
+            if value.getPersonality() == True:
+                if not self.head.info.getPersonality():  # if all the students in the queue have a bad attitude
+                   node.next = self.head
+                   self.head = node
+                else:
+                    while current is not None and current.info.getFinal() > node.info.getFinal() and current.info.getPersonality():
+                        previous = current
+                        current = current.next
+
+                        if current is not None and current.info.final_grade == node.info.final_grade:  # if the 2 students have the same grade in final and good attitude
+                            while current is not None and current.info.getMid() > node.info.getMid() and current.info.getPersonality():
+                                previous = current
+                                current = current.next
+
+                        previous.next = node
+                        node.next = current
+                        self.size += 1
+                        # add the node before the current if the current has a bad attitude or the node has a final grade > final grade of the current
+
+            else:  # if the new student has a bad attitude, we add it at the end of the queue
+                while current.next is not None:
+                    current = current.next
+
+                current.next = node
+
+    print("done")
+
+
+    def dequeueAll(self):
+        if self.size == 0:
+            print("Queue is empty")
+        elif self.size == 1:
+            print(self.head.info.getName())   
+            del self.head
+            self.size-=1
+
+        else:
+            current = self.head
+            while current is not None:
+                print(current.info.getName(), end=" ")
+                pre = current
+                current = current.next
+                del pre
+                self.size-=1
+
+        
 
 
 
@@ -259,7 +268,6 @@ def addStudent():
     S.setName(student_name)
     S.setPersonality(good_attitude)
     return S
-
 
 
 
@@ -416,6 +424,7 @@ def organizingInterview():
             PQ.enqueue(m)
         elif choice=="b" :
             print("The order of the interviews :")
+            PQ.dequeueAll()
         elif choice=="c":
             print("Returning to the main menu ...")
             p=0

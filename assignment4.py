@@ -152,10 +152,67 @@ class Student:
     
     def getPersonality(self):
         return self.good
+##setting methods##
+    def setName(self,name):
+        self.name=name
+    def setMid(self,mid):
+        self.mid_grade=mid
+    def setFinal(self,final):
+        self.final_grade=final
+    def setPersonality(self,personality):
+        self.good=personality
+
+
+
+
+
     
-##class QueuePriority:
+class PriorityQueue:
+
+  def __init__(self):
+    self.head = None
+    self.size = 0
     
     
+  def displayNodes(self):
+    current = self.head
+    while current != None:
+      print(current.info)
+      current = current.next
+
+  def enqueue(self, value):
+      node = Node(value)
+      if self.size == 0:
+          self.head = node
+          self.size += 1
+      else:
+          if node.info < self.head.info:
+            node.next = self.head
+            self.head = node
+            self.size += 1
+          else:
+             current = self.head
+             previous = current
+             while current != None and current.info <= node.info:
+                 previous = current
+                 current = current.next
+             previous.next = node
+             node.next = current
+             self.size += 1
+
+  def dequeue(self):      
+      if self.size == 0:
+          print("Queue is empty")
+                
+      elif self.size == 1:
+          self.head = None
+          self.size -= 1
+          
+      else:
+          current = self.head
+          self.head = self.head.next
+          current.next = None
+          self.size -= 1 
 
 
 

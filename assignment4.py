@@ -177,29 +177,41 @@ class PriorityQueue:
   def displayNodes(self):
     current = self.head
     while current != None:
-      print(current.info)
+      print(current.info.getName() , end=" ")
       current = current.next
 
   def enqueue(self, value):
-      node = Node(value)
-      if self.size == 0:
+      node = Node(value) #create the node
+      if self.size == 0: #if the queue is empty the node is the head
           self.head = node
           self.size += 1
       else:
-          if node.info < self.head.info:
-            node.next = self.head
-            self.head = node
-            self.size += 1
-          else:
-             current = self.head
-             previous = current
-             while current != None and current.info <= node.info:
-                 previous = current
-                 current = current.next
-             previous.next = node
-             node.next = current
-             self.size += 1
-
+          current=self.head
+          if value.getPersonality()==True:
+              if self.head.getPersonality()==False : #if all the student in the queue has a bad attitude
+                  node.next=self.head
+                  self.head=node
+              else :
+                  
+                  while current.info.getFinal()>node.info.getFinal() and current.info.getPersonality():
+                      previous=current
+                      current=current.next
+                  if current.info.final_grade==node.info.final_grade: ##if the 2 student has the same grade in final and good attitude
+                      while current.info.getMid()>node.info.getMid() :
+                          previous=current
+                          current=current.next   
+                      previous.next=node
+                      node.next=current
+                      self.size += 1
+                  else : #add the node before the current if the current has bad attitude or the node has a final grade > final grade of the current
+                     previous.next=node
+                     node.next=current
+                     self.size += 1
+          else: #if the new student has a bad attitude ,we add it at the end of the queue
+              while current.next is not None:
+                  current=current.next
+              current.next=node
+      print("done")
   def dequeue(self):      
       if self.size == 0:
           print("Queue is empty")
@@ -215,6 +227,38 @@ class PriorityQueue:
           self.size -= 1 
 
 
+
+
+def addStudent():
+    student_name = input("Enter the name of the student: ")
+    while True:
+        midterm_grade = int(input("Enter the midterm grade of the student: "))
+        if 0 <= midterm_grade <= 100:
+            break
+        else:
+            print("Invalid midterm grade. Enter a value between 0 and 100.")
+    while True:
+        final_grade = int(input("Enter the final grade of the student: "))
+        if 0 <= final_grade <= 100:
+            break
+        else:
+            print("Invalid final grade. Enter a value between 0 and 100.")
+    while True:
+        student_attitude = input("Enter the attitude of the student (Y for good, N for not good): ")
+        if student_attitude == "Y" or student_attitude == "N":
+            break
+        else:
+            print("Invalid attitude input. Enter Y for good or N for not good.")
+    if student_attitude=="Y":
+        good_attitude=True
+    else:
+        good_attitude=False
+    S=Student()
+    S.setFinal(final_grade)
+    S.setMid(midterm_grade)
+    S.setName(student_name)
+    S.setPersonality(good_attitude)
+    return S
 
 
 
@@ -368,7 +412,8 @@ def organizingInterview():
         choice=input("Enter the char. :")
         if choice=="a" :
             print("Add all the info of the student:")
-            PQ.enqueue(addStudent())
+            m=addStudent()
+            PQ.enqueue(m)
         elif choice=="b" :
             print("The order of the interviews :")
         elif choice=="c":
@@ -377,34 +422,6 @@ def organizingInterview():
         else:
             print("Enter :a or b or c  only ")
         
-
-def addStudent():
-    student_name = input("Enter the name of the student: ")
-    while True:
-        midterm_grade = int(input("Enter the midterm grade of the student: "))
-        if 0 <= midterm_grade <= 100:
-            break
-        else:
-            print("Invalid midterm grade. Enter a value between 0 and 100.")
-    while True:
-        final_grade = int(input("Enter the final grade of the student: "))
-        if 0 <= final_grade <= 100:
-            break
-        else:
-            print("Invalid final grade. Enter a value between 0 and 100.")
-    while True:
-        student_attitude = input("Enter the attitude of the student (Y for good, N for not good): ")
-        if student_attitude == "Y" or student_attitude == "N":
-            break
-        else:
-            print("Invalid attitude input. Enter Y for good or N for not good.")
-    if student_attitude=="Y":
-        good_attitude=True
-    else:
-        good_attitude=False
-    S= Student(student_name, midterm_grade, final_grade, good_attitude)
-    return S
-
 
 
 

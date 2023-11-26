@@ -327,28 +327,40 @@ def main():
     print("Welcome!")
 
     f=True 
+    count=0
     while(f):
         print("Please choose a number from this menu : \n ")
         print(" 1. Singly Linked List \n 2. Check if Palindrome \n 3. Priority Queue \n 4. Evaluate an Infix Expression \n 5. Graph \n 6. Exit \n")
         x=int(input("Ente the number : "))
         if x==1:
+            count=0
             print("You selected the first choice : ")
             singlyLinkedList()
         elif x==2:
+            count=0
             print("You selected the second choice : ")
             checkPalandrome()
         elif x==3:
+            count=0
             print("You selected the third choice : ")
             organizingInterview()
         elif x==4:
+            count=0
             print("You selected the fourth choice : ")
         elif x==5:
+            count=0
             print("You select the fifth choice : ")
             editGraph()
         elif x==6:
             print("You selected the sixth choice : ")
             print("Closing the menu ")
             f=False
+        else:
+            print("Enter a number from 1 to 6 only")
+            count+=1
+            if count==4 :
+                print("You have 4 consecutive errors")
+                f=False
     
     print("End of the  program...\nBye byee...")
             

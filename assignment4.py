@@ -347,19 +347,20 @@ def main():
         elif x==4:
             count=0
             print("You selected the fourth choice : ")
+            evaluateExpression()
         elif x==5:
             count=0
             print("You select the fifth choice : ")
             editGraph()
         elif x==6:
             print("You selected the sixth choice : ")
-            print("Closing the menu ")
+            print("Closing the menu... ")
             f=False
         else:
             print("Enter a number from 1 to 6 only")
             count+=1
             if count==4 :
-                print("You have 4 consecutive errors")
+                print("You have 4 consecutive errors \nClosing the menu...")
                 f=False
     
     print("End of the  program...\nBye byee...")
@@ -449,6 +450,20 @@ def organizingInterview():
             
 ##exercise4##
 ###############################
+
+
+def evaluateExpression():
+    expression=input("Enter an infix expression")
+    result=evaluate_infix(expression)
+    print(expression," = ",result)
+    
+    
+
+def evaluate_infix(expression):
+    number = [] #create a stack(list) to  store number
+    operator = [] #create a stack(list) to store operator
+    op=["+","-","*","/"]
+
 
 
 
